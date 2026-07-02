@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Dang · Senior Recruiter Portfolio</title>
+<style>
+  :root {
+    --bg: #fafaf9;
+    --surface: #ffffff;
+    --text: #1a1a1a;
+    --text-muted: #555555;
+    --text-subtle: #888888;
+    --border: #e5e5e5;
+    --accent: #2a4d6e;
+    --accent-soft: #f0f4f8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  .topbar {
+    font-size: 13px;
+    color: var(--text-subtle);
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 40px;
+  }
+
+  .header .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-subtle);
+    margin-bottom: 8px;
+  }
+
+  .header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+
+  .header .subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  .contact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px 24px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .contact a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .contact a:hover { color: var(--accent); }
+
+  .intro {
+    font-size: 16px;
+    color: var(--text-muted);
+    padding: 24px 0;
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 48px 0 20px;
+    letter-spacing: -0.3px;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0 8px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 640px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .stat .num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .stat .desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .company-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+
+  .company-block strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .company-block p {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 720px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  .col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+  }
+
+  .col h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: var(--accent);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  ul li:last-child { border-bottom: none; }
+
+  ul li::before {
+    content: "·";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .four-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 640px) {
+    .four-col { grid-template-columns: 1fr; }
+  }
+
+  .case {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .case-meta {
+    font-size: 12px;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .case-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+  }
+
+  .case h3 {
+    font-size: 18px;
+    margin: 6px 0 16px;
+  }
+
+  .case-section {
+    margin-bottom: 14px;
+  }
+
+  .case-section .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .case-section p {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  th {
+    text-align: left;
+    padding: 14px 16px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  td {
+    padding: 14px 16px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+
+  td.metric { font-weight: 600; color: var(--text); }
+  td.result { font-weight: 700; color: var(--accent); }
+
+  .footer {
+    margin-top: 60px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .footer strong { color: var(--text); }
+
+  .footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">👤 Rahul Dang &nbsp;/&nbsp; Senior Recruiter Portfolio</div>
+
+  <div class="header">
+    <div class="label">📋 Profile</div>
+    <h1>Rahul Dang</h1>
+    <div class="subtitle">Senior Technical &amp; Corporate Recruiter · 12 Years Experience</div>
+    <div class="contact">
+      <div>📍 Diamond Bar, CA</div>
+      <div>📧 <a href="mailto:dangrahul1192@gmail.com">dangrahul1192@gmail.com</a></div>
+      <div>📱 909-436-7726</div>
+      <div>🎓 University of Southern California<span style="display:block; padding-left:1.6em;">Bachelor of Arts (BA), Political Science</span></div>
+      <div>🏅 AIRS Certified Technical Recruiter<span style="display:block; padding-left:1.6em;">Recruiter Academy Certified Recruiter (RACR)</span></div>
+      <div>🔗 <a href="https://www.linkedin.com/in/rahuldang1" target="_blank">linkedin.com/in/rahuldang1</a></div>
+    </div>
+  </div>
+
+  <div class="intro">
+    💡 Twelve years closing hard-to-fill technical, GTM, and corporate roles across B2B technology, data, and infrastructure, in tight, competitive markets where sourcing strategy is critical. I own searches end to end, from sourcing through close, and build the systems behind the hiring: structured intake, targeted talent maps, and self-coded AI sourcing tools. Currently a senior recruiter at a national engineering firm with 70+ offices across 44 states.
+  </div>
+
+  <hr>
+
+  <h2>📊 At a Glance</h2>
+  <div class="stats">
+    <div class="stat"><div class="num">12</div><div class="desc">Years in full-cycle recruiting</div></div>
+    <div class="stat"><div class="num">60+</div><div class="desc">Hires closed per year at Experian</div></div>
+    <div class="stat"><div class="num">44</div><div class="desc">States covered at SCS Engineers</div></div>
+    <div class="stat"><div class="num">$200K+</div><div class="desc">Agency fees saved on niche hires</div></div>
+    <div class="stat"><div class="num" style="font-size:21px;">AI Workflows</div><div class="desc">Built and run a national AI talent-intelligence system adopted firm-wide, from live sourcing to executive workforce planning</div></div>
+  </div>
+
+  <hr>
+
+  <h2>🌐 Cross-Functional Experience</h2>
+  <p style="color: var(--text-muted); margin-bottom: 16px;">🗺️ Twelve years across software and infrastructure engineering, GTM, corporate, healthcare, and field roles, in-house and agency. Each market needs its own sourcing approach and its own read on compensation.</p>
+
+  <div class="company-block">
+    <strong>SCS Engineers · 70+ offices · 44 states</strong>
+    <p>Full-cycle hiring across civil and environmental engineering, software engineering, IT, cybersecurity, GTM, and corporate functions, including field hiring at scale. Built custom Claude Code sourcing scripts and Microsoft Copilot screening workflows. Closed 7 niche licensed engineering hires in 6 months and saved over $200K in agency fees.</p>
+  </div>
+
+  <div class="company-block">
+    <strong>Experian · Fortune 500 B2B data and technology platform</strong>
+    <p>Senior technical recruiter closing 60+ hires a year across software engineering (backend, cloud, platform), product, sales, marketing, and revenue operations. Closed Engineering Platform Directors and Cloud Infrastructure Managers personally, negotiating compensation directly against competing offers through to signature.</p>
+  </div>
+
+  <div class="company-block">
+    <strong>Hoag Health System · Digital platform engineering, IT, BD, and executive search</strong>
+    <p>Held 20+ active requisitions through a rapid health system expansion, delivering digital platform engineering and business development roles for a patient-facing telehealth launch. Sourced technical talent through GitHub and direct outreach to healthtech startups.</p>
+  </div>
+
+  <div class="company-block">
+    <strong>Prime Healthcare · 45 facilities · 14 states</strong>
+    <p>Held 20+ active requisitions across revenue cycle, corporate, and executive functions. Placed 5 executive-level candidates directly through LinkedIn outreach and warm referrals, with no retained search fees.</p>
+  </div>
+
+  <div class="company-block">
+    <strong>Horizon Hospitality · Agency search · Central and Western U.S.</strong>
+    <p>Ran full-cycle agency searches placing sales, operations, finance, accounting, and corporate leadership talent for client companies. Filled 30+ management and leadership searches a year, owning each from business development and client intake through close.</p>
+  </div>
+
+  <hr>
+
+  <h2>🎯 Sourcing and Closing</h2>
+  <p style="color: var(--text-muted); margin-bottom: 16px;">⚡ The work splits into two halves: finding people who do not surface in a standard keyword search, and closing them against competing offers. Both come down to sourcing depth, market data, and owning the search end to end.</p>
+
+  <div class="two-col">
+    <div class="col">
+      <h3>Hard-to-Fill Sourcing</h3>
+      <ul>
+        <li>Custom Claude Code scripts that surface licensed engineers hidden from conventional keyword searches</li>
+        <li>Targeted Boolean and passive outreach across LinkedIn Recruiter, SeekOut, and iCIMS</li>
+        <li>Competitor talent mapping and national talent maps for niche licensed markets</li>
+        <li>Conference and referral sourcing where job boards run thin</li>
+        <li>InMail response up 23% through AI-assisted research and personalized outreach</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Pre-Close and Negotiation</h3>
+      <ul>
+        <li>Closed Engineering Platform Directors and Cloud Infrastructure Managers personally at Experian</li>
+        <li>Multi-round technical pre-close and direct compensation negotiation against competing offers</li>
+        <li>Protected equity, leveling, and counteroffer expectations through to signature</li>
+        <li>Offer acceptance up 18% by owning the pre-close rather than handing it to HRBPs</li>
+        <li>5 executive placements at Prime through direct outreach, no retained search fees</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>🤖 Practical AI in Recruiting</h2>
+  <p style="color: var(--text-muted); margin-bottom: 16px;">🧠 I use AI as sourcing and screening leverage. It surfaces licensed and passive candidates that standard search misses and takes manual work off screening, which frees time to close. I build the tooling myself with Claude Code and Microsoft Copilot.</p>
+
+  <div class="two-col">
+    <div class="col">
+      <h3>Custom Sourcing Tools · Claude Code</h3>
+      <ul>
+        <li>Built custom Claude Code sourcing scripts that map qualifications across public web data and surface licensed engineers hidden from conventional keyword searches</li>
+        <li>Mapped 540+ named contacts across 181 organizations into a shared, living talent-intelligence file</li>
+        <li>Frees capacity for competitor talent mapping and workforce planning with business unit leaders</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>AI-Assisted Screening · Microsoft Copilot</h3>
+      <ul>
+        <li>Designed Copilot workflows for resume evaluation, tighter job descriptions, role-specific interview questions, and structured screen summaries</li>
+        <li>Increases weekly screen capacity and keeps screening consistent across recruiters and hiring managers</li>
+        <li>AI-assisted candidate and company research lifted InMail response rates by 23%</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>🏥 Industry &amp; Function Coverage</h2>
+  <div class="four-col">
+    <div class="col">
+      <h3>⚙️ Engineering &amp; Technical</h3>
+      <ul>
+        <li>Software engineering: backend, cloud, and platform (Experian)</li>
+        <li>IT and cybersecurity (SCS)</li>
+        <li>Civil and environmental engineering (SCS)</li>
+        <li>Licensed PE, PG, and BCEE engineers (SCS)</li>
+        <li>Engineering Platform Directors and Cloud Infrastructure Managers</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>💼 GTM &amp; B2B Tech</h3>
+      <ul>
+        <li>Sales: AE, SDR, and enterprise (Experian)</li>
+        <li>Marketing and revenue operations (Experian)</li>
+        <li>Product (Experian)</li>
+        <li>Business development (Hoag and SCS)</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>🏛️ Finance, Corporate &amp; Executive</h3>
+      <ul>
+        <li>Finance and G&amp;A roles</li>
+        <li>Revenue cycle (Prime Healthcare)</li>
+        <li>5 executive placements at Prime with no search fees</li>
+        <li>Engineering and GTM leadership closes (Experian)</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>🏥 Healthcare &amp; Field</h3>
+      <ul>
+        <li>Digital platform engineering and IT operations (Hoag)</li>
+        <li>Patient-facing telehealth launch (Hoag)</li>
+        <li>Revenue cycle and corporate (Prime)</li>
+        <li>High-volume field hiring (SCS)</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>📁 Case Studies</h2>
+  <p style="color: var(--text-muted); margin-bottom: 20px;">Documented examples of real problems identified and solved with specific actions and measurable outcomes.</p>
+
+  <div class="case">
+    <div class="case-header">
+      <div class="case-meta">SCS Engineers · 2024–Present</div>
+      <div class="case-tag">AI Tooling</div>
+    </div>
+    <h3>AI Sourcing Tool: National Engineering Talent Map Built with Claude Code</h3>
+    <div class="case-section"><div class="label">Problem</div><p>Licensed niche talent (PE, PG, BCEE) in solid waste, landfill design, and environmental compliance does not surface reliably through standard channels. LinkedIn returns broad results, and SeekOut coverage thins out in the smaller markets where many projects sit. External search fees for hard-to-fill technical roles routinely topped $30K per hire. The recruiting function across 70+ offices and 44 states needed a comprehensive, shared map of competitor and adjacent-industry talent that the standard stack could not produce.</p></div>
+    <div class="case-section"><div class="label">Action</div><p>Designed a continuously refreshed national talent intelligence map using Claude Code, built and refined over two weeks and maintained as a living resource. It ingested direct competitors, adjacent firms including Tetra Tech, Jacobs, TRC Companies, and Republic Services, municipal and county public works entities, and SWANA and RAM/SWANA conference rosters. Output lived in a single live spreadsheet, each row carrying current and prior employers, a narrative experience summary, technical specialties mapped to internal business unit needs, multi-state licensure, LinkedIn URL, and verified contact information. Every contact was tied to a specific hiring manager and business unit, so recruiters, hiring managers, and leaders could filter by specialty and act the same day.</p></div>
+    <div class="case-section"><div class="label">Result</div><p>Mapped 540+ named contacts across 181 organizations. Closed 7 licensed niche engineering hires in 6 months, avoiding an estimated $200K+ in external search fees, and displaced roughly $40K+ in planned sourcing spend by removing the need for a contract sourcer and paid subscriptions. Compressed an estimated 2 to 3 months, around 270 to 405 hours, of manual sourcing into a two-week build. Adopted across recruiters, hiring managers, and executive leadership as a shared asset for sourcing, competitive talent mapping, and workforce planning.</p></div>
+  </div>
+
+  <div class="case">
+    <div class="case-header">
+      <div class="case-meta">SCS Engineers · 2024–Present</div>
+      <div class="case-tag">Process</div>
+    </div>
+    <h3>Intake Redesign: Interview-to-Offer Ratio from 5:1 to 3:1</h3>
+    <div class="case-section"><div class="label">Problem</div><p>SCS ran a highly manual recruiting process with no structured intake. Requisitions opened without alignment on compensation, credentials, interview format, or candidate profile, producing a 5:1 interview-to-offer ratio across field and technical searches.</p></div>
+    <div class="case-section"><div class="label">Action</div><p>Built a structured intake process. Aligned hiring managers on compensation, credentials, interview format, and candidate profile before each requisition opened, and standardized passive outreach across iCIMS and LinkedIn Recruiter.</p></div>
+    <div class="case-section"><div class="label">Result</div><p>Interview-to-offer ratio improved from 5:1 to 3:1 across field and technical searches. Fewer interviews per hire, and tighter alignment before sourcing began.</p></div>
+  </div>
+
+  <div class="case">
+    <div class="case-header">
+      <div class="case-meta">Experian · 2021–2024</div>
+      <div class="case-tag">Closing</div>
+    </div>
+    <h3>Pre-Close and Negotiation: Offer Acceptance Up 18%</h3>
+    <div class="case-section"><div class="label">Problem</div><p>Senior technical and GTM offers were exposed to competing bids, and compensation talks handed back to HRBPs lost candidates late in the process. Aging searches sat in the backlog without a clear diagnosis.</p></div>
+    <div class="case-section"><div class="label">Action</div><p>Personally ran multi-round technical pre-close and negotiated compensation directly with candidates against multiple competing offers, protecting equity, leveling, and counteroffer expectations through to signature. Audited every search older than 60 days and renegotiated scope where the blocker was a misaligned profile rather than a sourcing gap.</p></div>
+    <div class="case-section"><div class="label">Result</div><p>Offer acceptance rates up 18%. Open requisition backlog down 12%. Sustained 60+ hires a year across technical, GTM, and corporate functions while carrying 15 to 25 active requisitions.</p></div>
+  </div>
+
+  <div class="case">
+    <div class="case-header">
+      <div class="case-meta">Prime Healthcare · 2018–2020</div>
+      <div class="case-tag">Executive Search</div>
+    </div>
+    <h3>Direct Executive Placement Without Agency Fees</h3>
+    <div class="case-section"><div class="label">Problem</div><p>Executive and corporate searches across a 45-facility hospital network in 14 states defaulted to retained search firms at significant cost.</p></div>
+    <div class="case-section"><div class="label">Action</div><p>Sourced and placed executive candidates directly through targeted LinkedIn outreach and warm referrals from inside the leadership network. Held warm pipelines on evergreen revenue cycle roles through quarterly outreach cadences.</p></div>
+    <div class="case-section"><div class="label">Result</div><p>5 executive-level candidates placed with no retained search fees, including revenue cycle and corporate GTM roles. Same-week submissions when facility requisitions reopened.</p></div>
+  </div>
+
+  <hr>
+
+  <h2>📈 Metrics Dashboard</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Result</th>
+        <th>Change</th>
+        <th>Context</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="metric">Interview-to-Offer Ratio</td><td class="result">3:1</td><td>↓ from 5:1</td><td>Field &amp; technical searches, SCS Engineers</td></tr>
+      <tr><td class="metric">Agency Fees Saved</td><td class="result">$200K+</td><td>↓ cost avoided</td><td>7 niche engineering hires, SCS Engineers</td></tr>
+      <tr><td class="metric">Offer Acceptance Rate</td><td class="result">+18%</td><td>↑ improvement</td><td>Personally managed pre-close, Experian</td></tr>
+      <tr><td class="metric">Open Req Backlog</td><td class="result">-12%</td><td>↓ reduction</td><td>Audited aging searches, scope renegotiated, Experian</td></tr>
+      <tr><td class="metric">InMail Response Rate</td><td class="result">+23%</td><td>↑ improvement</td><td>AI-assisted research and personalized outreach, SCS</td></tr>
+      <tr><td class="metric">Annual Hires</td><td class="result">60+</td><td>per year</td><td>Technical, GTM &amp; corporate, Experian</td></tr>
+      <tr><td class="metric">Niche Engineering Hires</td><td class="result">7</td><td>in 6 months</td><td>Hard-to-fill licensed markets, SCS Engineers</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>🔍 Sourcing Strategy Samples</h2>
+  <div class="four-col">
+    <div class="col">
+      <h3>⚙️ Niche Engineering</h3>
+      <ul>
+        <li>Custom Claude Code scripts that surface licensed engineers hidden from conventional keyword search</li>
+        <li>SeekOut filtered by specialty and geography for smaller markets</li>
+        <li>GitHub for active contributor profiles</li>
+        <li>Boolean search on LinkedIn Recruiter for passive candidates</li>
+        <li>Conference and referral sourcing through SWANA and RAM/SWANA networks</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>💼 GTM / Revenue / Corporate</h3>
+      <ul>
+        <li>Title-based Boolean targeting competitor alumni</li>
+        <li>Direct competitive sourcing from target companies</li>
+        <li>AI-assisted candidate and company research for personalized outreach</li>
+        <li>Employee referral activation</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>👔 Executive Search</h3>
+      <ul>
+        <li>Direct passive outreach with researched, personal messages</li>
+        <li>Findem for cross-platform intelligence on senior profiles</li>
+        <li>Warm referrals from inside leadership networks</li>
+        <li>Executive placements closed with no retained search fees</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>💰 Finance &amp; Corporate</h3>
+      <ul>
+        <li>LinkedIn Recruiter filtered by finance certifications and senior titles</li>
+        <li>Boolean strings for controller, FP&amp;A, senior accountant, and finance manager roles</li>
+        <li>Warm referrals from finance leaders and former colleagues</li>
+        <li>LinkedIn Talent Insights for market conditions on senior finance roles</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>🛠 Systems &amp; Tools</h2>
+  <div class="four-col">
+    <div class="col">
+      <h3>AI &amp; Automation</h3>
+      <ul>
+        <li>Claude Code</li>
+        <li>Microsoft Copilot</li>
+        <li>Paradox</li>
+        <li>Findem</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>ATS &amp; HRIS</h3>
+      <ul>
+        <li>iCIMS</li>
+        <li>SmartRecruiters</li>
+        <li>Workday</li>
+        <li>Greenhouse</li>
+        <li>SuccessFactors</li>
+        <li>Paylocity · Oracle</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Sourcing</h3>
+      <ul>
+        <li>LinkedIn Recruiter</li>
+        <li>SeekOut · HireEZ</li>
+        <li>Indeed</li>
+        <li>GitHub · Handshake</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Analytics &amp; Ops</h3>
+      <ul>
+        <li>LinkedIn Talent Insights</li>
+        <li>Pipeline Tracking</li>
+        <li>Microsoft Excel</li>
+        <li>Google Sheets</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>Productivity &amp; Scheduling</h3>
+      <ul>
+        <li>Trello · Asana</li>
+        <li>Slack</li>
+        <li>GoodTime</li>
+        <li>Calendly</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    📬 <strong>Rahul Dang</strong> · <a href="mailto:dangrahul1192@gmail.com">dangrahul1192@gmail.com</a> · 909-436-7726 · Diamond Bar, CA · <a href="https://www.linkedin.com/in/rahuldang1" target="_blank">linkedin.com/in/rahuldang1</a>
+  </div>
+
+</div>
+</body>
+</html>
